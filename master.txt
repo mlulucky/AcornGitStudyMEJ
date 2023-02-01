@@ -1,3 +1,5 @@
 master 작업중입니다.
 iss53 수정완료
 <img src="iss53.txt">
+hotfix가 로그인 기능을 추가했습니다
+<iframe src=".loginHotfix.txt"> // iframe : 다른 html 추가

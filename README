@@ -16,9 +16,9 @@ git init : git 저장소 생성 (.git 포함하는 하위 폴더는 모두 저�
 git diff / git diff [파일명]:  작업내역(working 디렉토리)과 저장소(git 디렉토리)의 이력을 비교해서 보여주는 명령어
 git diff --staged : 추적하는(Index) 내역과 저장소의 이력을 비교해서 보여주는 명령어
 
-git add . (점은 전부) 또는 *  [파일명] : 작업내역을 Index(Staging area)에서 추적하는 명령어 
+git add . (점은 전부) 또는 *  [파일명] : 작업내역을 Index(Staging area)에서 추적하는 명령어  // 새로운 파일 추적하기
 (. 점은 하위폴더와 숨김폴더에 있는 모든 파일 / * 별은 이전에 추가한적이 있었던 모든 파일(새로운파일 제외))
-git commit -m"코멘트" 는 Index에서 추적하는 내역을 저장소에 저장하는 명령어
+git commit -m"코멘트" 는 Index에서 추적하는 내역을 저장소에 저장하는 명령어 // 커밋하는 방법
 git commit -a -m "" 는 git add * + git commit -m"" : 추적과 저장이 합쳐진 명령어(새로운 파일은 제외하고 저장한다)
 git reset HEAD <file> 는 추적하는 파일을 추적하지 않는 상태로 변경
 .gitignore 는 파일을 작성하면 Index에서 감시하지 않을 파일이나 폴더를 추가할 수 있다.
@@ -28,6 +28,10 @@ git checkout -- . 또는 <파일명> : 작업내역(working디렉토리)에 문�
 마지막에 저장한 내역으로 초기화 하는 명령어(작업내역 취소 -> 생각보다 많이 사용)
 
 git log : 커밋이력을 보는 명령어
+git log --graph : 커밋이력 그래프로 기록 보기
+git log --oneline --graph : 한줄로 간략하게 커밋이력 보기. 현재 작업중인 가지만 나온다
+git log --oneline --graph --branches :  가지친 것들이 전부 보인다 
+
 git log -p :
 git log --prettey :
 git log -[수] : 
@@ -35,9 +39,9 @@ git log -[수] :
 branch : 기존의 작업에서 다른 작업을 하고 싶을 때 생성하는 가지 
 (master, main) branch : git init 시 최초로 생성되는 가지로 배포 또는 병합하는 메인 가지다.
 (절대 삭제하지 않는다, main은 github에서 권장하는 이름)  
-git branch <브랜치 가지이름> : 새로운 branch를 생성하는 명령어
-git checkout <가지이름> : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
-git checkout-b <가지이름> : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
+git branch 브랜치 가지이름  : 새로운 branch를 생성하는 명령어
+git checkout 가지이름 : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
+git checkout-b 가지이름 : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
 
 
 

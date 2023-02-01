@@ -1,0 +1,13 @@
+<!--로그인 기능 추가-->
+<form name="loginForm">
+	<input name="id" value="fsdfdssd">
+	<input name="pw">
+</form>
+
+<script>
+document.forms.loginForm.id.onchange = function(e) { // id가 바꼈을때마다, 함수 실행
+	if (this.value.length<4) { // this는 아이디
+		alert("아이디는 4글자 이상입니다!");		
+	}
+} 
+</script>
