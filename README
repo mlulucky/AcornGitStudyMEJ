@@ -28,6 +28,10 @@ git checkout -- . 또는 <파일명> : 작업내역(working디렉토리)에 문�
 마지막에 저장한 내역으로 초기화 하는 명령어(작업내역 취소 -> 생각보다 많이 사용)
 
 git log : 커밋이력을 보는 명령어
+git log --graph : 커밋이력 그래프로 기록 보기
+git log --oneline --graph : 한줄로 간략하게 커밋이력 보기. 현재 작업중인 가지만 나온다
+git log --oneline --graph --branches :  가지친 것들이 전부 보인다 
+
 git log -p :
 git log --prettey :
 git log -[수] : 
@@ -35,9 +39,9 @@ git log -[수] :
 branch : 기존의 작업에서 다른 작업을 하고 싶을 때 생성하는 가지 
 (master, main) branch : git init 시 최초로 생성되는 가지로 배포 또는 병합하는 메인 가지다.
 (절대 삭제하지 않는다, main은 github에서 권장하는 이름)  
-git branch <브랜치 가지이름> : 새로운 branch를 생성하는 명령어
-git checkout <가지이름> : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
-git checkout-b <가지이름> : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
+git branch 브랜치 가지이름  : 새로운 branch를 생성하는 명령어
+git checkout 가지이름 : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
+git checkout-b 가지이름 : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
 
 
 
