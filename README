@@ -1,16 +1,22 @@
 깃허브 스터디 프로젝트
 1. README 파일 생성
-2. git status : 상태를 확인하는 명령어
+2. git status : 상태를 확인하는 명령어 // git status-s : 상태를 짧게(short) 확인하는 명령어
 -> Untracked : 저장소에 참조하지 않은 파일 (New File)
 3. git add READ : 해당 파일은 Staging Area 영역(Index)에 추적하는 명령어
--> Staged new file : READ
+-> Staged new file : README : index 에서 해당 파일을 추적하는 중이다.
+-> nothing to commit, working tree clean : 작업이력과 저장소 이력이 같다.
+4. git commit -m "코멘트" : Index 에서 추적하는 내역을 .git(저장소)에 저장하는 명령어
+5. README 파일 내용을 수정 후 저장 : Untracted modified README // 파일 수정하면 
+-> modified : README : 작업이력과 저장소 이력이 다르다 -> 변경된 부분을 저장(추적, 관리)해라 => git add . 변경된 부분이 스냅샷이 된다
+5. git add README : 추적. Staged modified README
+7. git commit -m "README 수정 후 저장" : 저장("README 수정 후 저장") 
 
+*git status는 습관이다. 명령어 치고 상태확인하는 습관
 
 ** 파일생성 후 저장
-untracked -> add the file -> staged -> unmodified(committed)
+untracked -> staged -> unmodified(committed)
 ** 파일수정 후 저장
-modified -> staged -> unmodified(committed)
-수정은 했는데 추적이 안되는 상태 -> 수정은 됬는데 staged상태.  
+untracked(modified) -> staged(modified) -> unmodified(committed)   // unmodified : 수정하지않음. 최신버전
 
 git init : git 저장소 생성 (.git 포함하는 하위 폴더는 모두 저장소에서 관리)
 git diff / git diff [파일명]:  작업내역(working 디렉토리)과 저장소(git 디렉토리)의 이력을 비교해서 보여주는 명령어
@@ -20,9 +26,11 @@ git add . (점은 전부) 또는 *  [파일명] : 작업내역을 Index(Staging 
 (. 점은 하위폴더와 숨김폴더에 있는 모든 파일 / * 별은 이전에 추가한적이 있었던 모든 파일(새로운파일 제외))
 git commit -m"코멘트" 는 Index에서 추적하는 내역을 저장소에 저장하는 명령어 // 커밋하는 방법
 git commit -a -m "" 는 git add * + git commit -m"" : 추적과 저장이 합쳐진 명령어(새로운 파일은 제외하고 저장한다)
-git reset HEAD <file> 는 추적하는 파일을 추적하지 않는 상태로 변경
+git reset HEAD <file> : 추적하는 파일을 추적하지 않는 상태로 변경
+
 .gitignore 는 파일을 작성하면 Index에서 감시하지 않을 파일이나 폴더를 추가할 수 있다.
 (컴퓨터나 편집기 설정 파일을 제외한다. git 프로젝트 안에 다른 git 프로젝트가 있을때)
+
 git commit --amend 는 커밋의 멘트를 변경하고 싶을 때 (잘 사용하지 않음)
 git checkout -- . 또는 <파일명> : 작업내역(working디렉토리)에 문제가 있을때 
 마지막에 저장한 내역으로 초기화 하는 명령어(작업내역 취소 -> 생각보다 많이 사용)
@@ -31,17 +39,52 @@ git log : 커밋이력을 보는 명령어
 git log --graph : 커밋이력 그래프로 기록 보기
 git log --oneline --graph : 한줄로 간략하게 커밋이력 보기. 현재 작업중인 가지만 나온다
 git log --oneline --graph --branches :  가지친 것들이 전부 보인다 
-
 git log -p :
 git log --prettey :
 git log -[수] : 
 
-branch : 기존의 작업에서 다른 작업을 하고 싶을 때 생성하는 가지 
+■ branch : 기존의 작업에서 다른 작업을 하고 싶을 때 생성하는 가지 
 (master, main) branch : git init 시 최초로 생성되는 가지로 배포 또는 병합하는 메인 가지다.
-(절대 삭제하지 않는다, main은 github에서 권장하는 이름)  
-git branch 브랜치 가지이름  : 새로운 branch를 생성하는 명령어
-git checkout 가지이름 : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
-git checkout-b 가지이름 : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
+(절대 삭제하지 않는다, main은 github에서 권장하는 이름) 
+git branch : 생성된 가지들 (옵션 : -v, -vv, --mreged, --no-merged) 
+git branch <가지이름>  : 새로운 branch를 생성하는 명령어
+git branch -m <new 가지이름> : branch 이름 변경
+git branch -d <가지이름> : branch 삭제
+git checkout <가지이름> : 해당 가지를 선택해서 작업하겠다(HEAD를 변경)는 명령어
+git checkout-b <가지이름> : 가지를 생성하면서 HEAD를 변경하는 명령어(git branch + git checkout)
+(b는 branch의 준말)
+
+■ git merge <Other 가지이름> : 해당 가지(HEAD가 선택한 가지)를 다른 가지와 병합
+- fast-forward merge : 병합하는 가지가 자식이력일때 (이력을 추가하기만 함)
+- 일반적인 병합 : 서로 다른 이력의 가지를 합치면서 새로운 commit 이 생성되는 것
+
+■ 리모트 저장소(github)
+git remote add <리모트저장소이름 : origin> <url> : 로컬저장소에 리모트 저장소의 주소를 등록
+git remote remove <리모트저장소이름> : 리모트 저장소의 주소 삭제
+git remote -v : 리모트 저장소의 리스트(fetch, push ... 주소)를 알려준다 (git config --list 로도 열람가능)
+git remote show <리모트저장소이름: origin>  : 깃허브 리모트 저장소에 접속해서 이력 상태를 가져옴 
+git remote rename A B : 리모트 저장소 A의 이름를 B로 바꾼다.
+
+git clone <리모트 저장소 url> : 리모트 저장소의 이력을 다운로드
+git push <remote> <branch> : 리모트 저장소에 로컬의 가지 이력을 올리는 명령어 (리모트 저장소에 권한이 필요)
+git fetch <remote> <branch> : 리모트 저장소에서 특정 가지의 이력을 다운로드
+git pull <remote> <branch> : 리모트 저장소에서 특정 가지의 이력을 다운로드하면서, 자동 병합하는 명령어 
+
+■ 리모트 저장소 브랜치 트랙킹
+<remote>/<branch> : 리모트 저장소에 올리거나 다운받은 가지의 이름 (UpSream branch) 
+- 로컬에서 checkout으로 바로 참조할 수 없다 (HEAD를 옮길 수 없다.)
+- 만약 강제로 옮기면 git checkout remote/branch => 가지가 없이 commit 내역만 선택 (+경고창)
+
+가지 선택하는 방법(순서)
+git checkout --track remote/branch 이름 : 로컬에 리모트 branch와 동일한 이름의 branch가 생성된다. -> track set up
+git checkout branch
+
+** 만약 로컬에 리모트와 동일한 이름의 branch가 있다면 이름을 바꾸면서 만들어야 한다.
+git checkout -b <new branch><remote>/<branch>
+
+** 만약 로컬에 리모트와 동일한 이름의 branch가 있고, 이력이 같다면 바로 로컬의 가지 branch를 선택
+git branch -u <remote>/<branch>
+
 
 
 
