@@ -1,5 +1,5 @@
 깃허브 스터디 프로젝트
-1. README 파일 생성
+1. echo "깃허브 스터디 프로젝트" > README : README 파일 생성 // echo "파일에 저장될 내용" > 생성파일이름
 2. git status : 상태를 확인하는 명령어 // git status-s : 상태를 짧게(short) 확인하는 명령어
 -> Untracked : 저장소에 참조하지 않은 파일 (New File)
 3. git add READ : 해당 파일은 Staging Area 영역(Index)에 추적하는 명령어
