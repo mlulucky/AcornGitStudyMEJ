@@ -1,1 +1,4 @@
 main 작업중입니다.
+iss53_2 수정완료
+
+<img src="iss53_2.txt">
