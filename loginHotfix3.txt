@@ -1,0 +1,5 @@
+<!--로그인 기능 추가-->
+<form name="loginForm">
+	<input name="id" value="fsdfdssd">
+	<input name="pw">
+</form>
