@@ -1,0 +1,3 @@
+test3 진행중
+int [] arr ={1,2,3,4}
+Optional<Integer> sum = java.util.Arrays.stream(arr).reduce((a,b) -> a+b);
