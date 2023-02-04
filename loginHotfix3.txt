@@ -3,3 +3,11 @@
 	<input name="id" value="fsdfdssd">
 	<input name="pw">
 </form>
+
+<script>
+	document.forms.loginForm.id.onchange=function(e) {
+	if (this.value.length<4) {
+		alert("아이디는 4글자 이상입니다!");
+	}
+}
+</script>
