@@ -100,4 +100,4 @@ staged된 moidied == staged == change to be committed
 unmodified == clean working
 
 
-수정된 내용이 스냅샷이 된다 == 커밋
+staging area 수정된 내용이 스냅샷이 된다 => 수정된 내용 스냅샷이 저장된다 (커밋)
